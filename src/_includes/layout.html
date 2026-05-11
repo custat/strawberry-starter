@@ -1,16 +1,18 @@
 ---
 layout: head.html
 ---
+
 <body>
     <nav>
         <ol>
-            <li><a href="/">Home</a></li>
+            <li><a href="/">TOP</a></li>
             {% for i in collections.navbar %}
-                <li><a href="{{ i.url }}">{{ i.data.title }}</a></li>
+            <li><a href="{{ i.url }}">{{ i.data.title }}</a></li>
             {% endfor %}
         </ol>
         {% include "navbar.html" %}
     </nav>
+    <div class='banner'><img src='/assets/images/blog_20250320.gif'></div>
     <main>
         <header>
             <h1>{{ title }}</h1>
@@ -20,16 +22,17 @@ layout: head.html
             {% endif %}
         </header>
         {{ content }}
-        {% if page.url == '/'  and collections.posts%}
-            <h2>Latest Posts:</h2>
-            <ol id="latest_posts">
-                {% assign latest_posts = collections.posts | reverse | getLatestFive %}
+        {% if page.url == '/' and collections.posts%}
+
+        <h3>⟣⟞ RECENT ⟝⟢</h3>
+        <ol id="latest_posts">
+            {% assign latest_posts = collections.posts | reverse | getLatestFive %}
             {% for i in latest_posts %}
-                <li>
-                    <a href="{{ i.url }}">{{ i.date | dateFormat }} - {{ i.data.title }}</a>
-                </li>
+            <li>
+                <a href="{{ i.url }}">{{ i.date | dateFormat }} - {{ i.data.title }}</a>
+            </li>
             {% endfor %}
-            </ol>
+        </ol>
         {% endif %}
     </main>
     {% assign previousPost = collections.posts | getPreviousCollectionItem %}
@@ -39,15 +42,19 @@ layout: head.html
     <nav id="pagination">
         {% if previousPost %}
         <section class="pagectrl pageprev">
-            <p>Previous:</p>
-            <a href="{{ previousPost.url }}"><p>{{ previousPost.data.title }}</p><time>{{ previousPost.date | dateFormat }}</time></a>
+            <p>⇜PREV</p>
+            <a href="{{ previousPost.url }}">
+                <p>{{ previousPost.data.title }}</p><time>{{ previousPost.date | dateFormat }}</time>
+            </a>
         </section>
         {% endif %}
 
         {% if nextPost %}
         <section class="pagectrl pagenext">
-            <p>Next:</p>
-            <a href="{{ nextPost.url }}"><p>{{ nextPost.data.title }}</p><time>{{ nextPost.date | dateFormat }}</time></a>
+            <p>NEXT⇝</p>
+            <a href="{{ nextPost.url }}">
+                <p>{{ nextPost.data.title }}</p><time>{{ nextPost.date | dateFormat }}</time>
+            </a>
         </section>
         {% endif %}
     </nav>
@@ -59,22 +66,22 @@ layout: head.html
 
     <footer>
         <p>
-            {{ config.siteName }} is written by 
+            {{ config.siteName }} purged by
             {% if config.authorLink != "" %}
-                <a href="{{ config.authorLink }}">{{ config.siteAuthor }}</a>
-                {% else %}
-                {{ config.siteAuthor }}
+            <a href="{{ config.authorLink }}">{{ config.siteAuthor }}</a>
+            {% else %}
+            {{ config.siteAuthor }}
             {% endif %}
         </p>
         {% if config.authorContact != "" %}
-            <address>Contact: <a href="mailto:{{ config.authorContact}}">{{ config.authorContact }}</a></address>
+        <address>Contact: <a href="mailto:{{ config.authorContact}}">{{ config.authorContact }}</a></address>
         {% endif %}
         <aside>
             <p>
-                <time class="lastupdate" datetime="{{lastUpdate}}">Last update: {{ lastUpdate }}</time>
+                <time class="lastupdate" datetime="{{lastUpdate}}">Updated: {{ lastUpdate }}</time>
                 <a href="/feed.xml">RSS</a>
             </p>
-            <a href="#">back to top</a>
+            <a href="#">🢑🢕▵⭱⍐⭱▵🢕🢑</a>
         </aside>
     </footer>
 </body>

@@ -5,7 +5,31 @@ import { jsonc } from "jsonc";
 
 const config = jsonc.parse(fs.readFileSync('src/_data/config.jsonc', 'utf8'));
 
+
 export default function (eleventyConfig) {
+  // Copy the `css` directory to the output
+  eleventyConfig.addPassthroughCopy('./styles');
+  eleventyConfig.addPassthroughCopy('styles');
+  eleventyConfig.addPassthroughCopy('assets/styles');
+
+  // Watch the `css` directory for changes
+  eleventyConfig.addWatchTarget('./styles');
+  eleventyConfig.addWatchTarget('styles');
+  eleventyConfig.addWatchTarget('/assets/styles');
+
+  // Set directories to pass through to the _site folder
+  eleventyConfig.addPassthroughCopy('./assets');
+  eleventyConfig.addWatchTarget('./assets');
+    eleventyConfig.addPassthroughCopy('images');
+    eleventyConfig.addWatchTarget('images');
+	eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addWatchTarget('src/assets/images');
+  eleventyConfig.addPassthroughCopy("/src/assets/images/");
+  eleventyConfig.addPassthroughCopy("/src/assets/images/*");
+  eleventyConfig.addPassthroughCopy("../assets/images/");
+  eleventyConfig.addPassthroughCopy("/assets");
+  
+    eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("src/assets/");
   eleventyConfig.addPassthroughCopy("src/social.png");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
@@ -59,7 +83,7 @@ export default function (eleventyConfig) {
     const MDY = `${month}/${day}/${year}`;
     const YMD = `${year}/${month}/${day}`;
     const YDM = `${year}/${day}/${month}`;
-    return DMY;
+    return YMD;
   });
 
   eleventyConfig.addFilter("getLatestFive", function(value) {

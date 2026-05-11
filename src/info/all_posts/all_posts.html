@@ -1,8 +1,17 @@
 ---
-title: All Posts
+permalink: "/archive/"
+title: AKASHIC RECORD
 date: 2025-01-01
 ---
+
+{% if collections | filterTags %}
+<h3>⟣⟞ KEYWORDS ⟝⟢</h3>
+{% include "allTags.html" %}
+{% endif %}
+
 {% if not collections.post %}
+
+<h3>⟣⟞ ARCHIVE ⟝⟢</h3>
 <ol id="latest_posts">
     {% for i in collections.posts reversed %}
     <li><a href="{{ i.url }}">{{ i.date | dateFormat }} - {{ i.data.title }}</a></li>
@@ -10,9 +19,4 @@ date: 2025-01-01
 </ol>
 {% else %}
 <p>No posts yet!</p>
-{% endif %}
-
-{% if collections | filterTags %}
-<h2>Posts by tag:</h2>
-{% include "allTags.html" %}
 {% endif %}

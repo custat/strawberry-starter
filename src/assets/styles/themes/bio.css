@@ -1,0 +1,129 @@
+:root {
+    --main-bg-color: whitesmoke;
+    --secondary-bg-color: teal;
+    --main-fg-color: #1d1d1d;
+    --main-highlight-color: #001234;
+    --secondary-highlight-color: turquoise;
+    --main-link-color: rgb(205, 48, 0);
+}
+
+html {
+    scrollbar-color: var(--main-highlight-color) #00000000;
+    font-family: arial, "MS Pgothic", "Meiryo", "Hiragino Kaku Gothic Pro";
+    background-image: url(../../images/2024030302.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top left;
+}
+
+nav:not(#pagination) {
+    background-color: var(--main-bg-color);
+    position: fixed;
+    top: 0rem;
+    left: 0rem;
+    width: 12rem;
+    height: 100%;
+    gap: 2rem;
+    background-color: var(--main-highlight-color);
+    padding: 0rem;
+    padding-top: 2rem;
+}
+
+nav:not(#pagination) ol {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+nav:not(#pagination) li {
+    width: 100%;
+}
+
+nav:not(#pagination) a {
+    font-size: 1.5rem;
+    color: var(--main-bg-color);
+    text-decoration: none;
+    font-family:  "arial black";
+}
+
+main {
+    background-color: var(--main-bg-color);
+    color: var(--main-fg-color);
+}
+
+main a {
+    color: var(--main-link-color);
+}
+
+main,
+footer {
+    border: 3px ridge var(--main-bg-color);
+}
+
+footer {
+    background-color: var(--main-highlight-color);
+    color: var(--secondary-bg-color);
+}
+
+footer a {
+    color: var(--main-bg-color);
+}
+
+nav {
+    border-bottom: none;
+}
+
+blockquote {
+    margin-left: 0;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--secondary-bg-color);
+}
+
+code {
+    background-color: var(--secondary-highlight-color);
+    padding: 0.1rem;
+}
+
+pre:has(code) {
+    background-color: var(--secondary-highlight-color);
+}
+
+#pagination {
+    flex-direction: row;
+    background-color: var(--secondary-bg-color);
+    border-left: 3px ridge var(--main-bg-color);
+    border-right: 3px ridge var(--main-bg-color);
+    color: var(--main-bg-color);
+}
+
+#pagination a {
+    color: var(--main-highlight-color);
+}
+
+a:hover {
+    opacity: 75%;
+}
+
+.lastupdate::after {
+    content: " ✐ ";
+}
+
+@media (max-width: 1200px) {
+    nav:not(#pagination) {
+        position: static;
+        width: 100%; 
+        margin-bottom: 1.5rem;
+        padding-top: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 1rem;
+    }
+    nav:not(#pagination) ol {
+        flex-direction: row;
+    }
+    nav:not(#pagination) ol li {
+        width: auto;
+    }
+}
